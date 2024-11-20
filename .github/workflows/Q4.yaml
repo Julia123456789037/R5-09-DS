@@ -9,16 +9,19 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: prénom et nom et Q4.java Q4_archive_date.txt
-        run: echo "Justine Bondu" >> Q4_archive_date.txt
-              cat Q4.java >> Q4_archive_date.md
-      - name: Append date to Q4_archive_date.txt
-        run: echo "Date: $(date '+%d-%m-%Y')" >> Q4_archive_date.txt
-      # push
-      - name: Q4_archive_date.txt commmit et push
+
+      - name: ajout nom et  Q4.java dans Q4_archive_date.txt
         run: |
-          git config --global user.name Julia123456789037
-          git config --global user.email julia037.filia@gmail.com
-          git add Q4_archive_date.md
+          echo "Justine Bondu" > Q4_archive_date.txt
+          cat Q4.java >> Q4_archive_date.txt
+      - name: ajouter la date dans Q4_archive_date.txt
+        run: |
+          echo "Date: $(date '+%d-%m-%Y, %H:%M:%S')" >> Q4_archive_date.txt
+
+      - name: Commit and push Q4_archive_date.txt
+        run: |
+          git config --global user.name "Julia123456789037"
+          git config --global user.email "julia037.filia@gmail.com"
+          git add Q4_archive_date.txt
           git commit -m "test push de Q4_archive_date.txt"
           git push
