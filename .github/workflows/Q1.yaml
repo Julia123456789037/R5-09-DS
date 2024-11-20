@@ -1,5 +1,5 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions
+name: Q1_archive_README
+run-name: ${{ github.actor }} is testing Q1_archive_README
 on: [push]
 permissions:
   contents: write
