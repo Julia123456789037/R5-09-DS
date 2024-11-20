@@ -15,9 +15,13 @@ jobs:
           echo "Justine Bondu" > Q3_archive_java.md
           echo "Date: $(date '+%d-%m-%Y, %H:%M:%S')" >> Q3_archive_java.md
 
-      - name: ajout de Q3.java dans Q3_archive_java.txt
+      - name: Add Q3.java content to Q3_archive_java.md
         run: |
           cat Q3.java >> Q3_archive_java.md
+
+      - name: Pull changes from remote before pushing
+        run: |
+          git pull origin main --rebase
 
       - name: Commit and push Q3_archive_java.md
         run: |
@@ -26,4 +30,3 @@ jobs:
           git add Q3_archive_java.md
           git commit -m "test push de Q3_archive_java.md"
           git push
-
