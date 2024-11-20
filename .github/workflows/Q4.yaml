@@ -1,0 +1,23 @@
+name: Q3_archive_java.txt
+run-name: ${{ github.actor }} is testing Q3_archive_java.txt
+on: [push]
+permissions:
+  contents: write
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: prénom et nom Q3_archive_java.txt
+        run: echo "Justine Bondu" >> Q3_archive_java.txt
+      - name: ajout de Q3.java dans Q3_archive_java.txt
+        run: cat Q3.java >> Q3_archive_java.md
+      # push
+      - name: Q3_archive_java.txt commmit et push
+        run: |
+          git config --global user.name Julia123456789037
+          git config --global user.email julia037.filia@gmail.com
+          git add Q2_archive_README.md
+          git commit -m "test push de Q3_archive_java.txt"
+          git push
