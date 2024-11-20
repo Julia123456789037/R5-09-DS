@@ -10,10 +10,9 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Add name and date to Q3_archive_java.md
+      - name: Add name to Q3_archive_java.md
         run: |
           echo "Justine Bondu" > Q3_archive_java.md
-          echo "Date: $(date '+%d-%m-%Y, %H:%M:%S')" >> Q3_archive_java.md
 
       - name: Add Q3.java content to Q3_archive_java.md
         run: |
