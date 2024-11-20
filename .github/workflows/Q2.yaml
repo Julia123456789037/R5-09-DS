@@ -9,18 +9,20 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: prénom et nom Q2_archive_README.md
+
+      - name: Add name and date to Q2_archive_README.md
         run: |
-          echo "Justine Bondu" >> Q2_archive_README.md
-          date > Q2_archive_README.md
-      - name: readme dans Q2_archive_README.md
-        run: | 
-          cp README.md Q2_archive_README.md
-      # push
-      - name: Q2_archive_README.md commmit et push
+          echo "Justine Bondu" > Q2_archive_README.md
+          echo "Date: $(date '+%d-%m-%Y, %H:%M:%S')" >> Q2_archive_README.md
+
+      - name: Copy README.md content to Q2_archive_README.md
         run: |
-          git config --global user.name Julia123456789037
-          git config --global user.email julia037.filia@gmail.com
+          cat README.md >> Q2_archive_README.md
+
+      - name: Commit and push Q2_archive_README.md
+        run: |
+          git config --global user.name "Julia123456789037"
+          git config --global user.email "julia037.filia@gmail.com"
           git add Q2_archive_README.md
           git commit -m "test push de Q2_archive_README.md"
           git push
