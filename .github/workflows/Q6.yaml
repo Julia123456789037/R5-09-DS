@@ -1,0 +1,59 @@
+name: Q6 Workflow
+run-name: ${{ github.actor }} is running Q6 workflow
+on: [push]
+permissions:
+  contents: write
+
+jobs:
+  Q6-archive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      # Étape 1: Recopier Q5.java dans Q6.java et modifier la classe
+      - name: Copy Q5.java to Q6.java and modify class name
+        run: |
+          cp Q5.java Q6.java
+          sed -i 's/class Q5/class Q6/' Q6.java
+
+      # Étape 2: Créer Q6_archive_date.txt
+      - name: Create Q6_archive_date.txt
+        run: |
+          # Obtenir la date dans le format JJ-MM-AAAA-HHMMSS
+          DATE=$(date '+%d-%m-%Y-%H%M%S')
+          
+          # Créer le fichier Q6_archive_date.txt
+          echo "Justine Bondu" > Q6_archive_date.txt
+          echo "Date: $DATE" >> Q6_archive_date.txt
+          echo "" >> Q6_archive_date.txt
+          cat Q6.java >> Q6_archive_date.txt
+          echo "" >> Q6_archive_date.txt
+          
+          # Ajouter la taille du fichier Q6.java (en caractères et en lignes)
+          wc Q6.java >> Q6_archive_date.txt
+
+      # Étape 3: Créer Q6_différences.txt (différence avec le dernier fichier Q6_archive_date.txt)
+      - name: Compare with last Q6_archive_date.txt
+        run: |
+          # Vérifier si un fichier précédent existe
+          if [ -f Q6_archive_date.txt ]; then
+            echo "Comparing with the last Q6_archive_date.txt"
+            # Différencier avec le dernier fichier Q6_archive_date.txt
+            diff Q6_archive_date.txt Q6_archive_date.txt.prev > Q6_différences.txt
+          fi
+
+      # Étape 4: Sauvegarder le fichier actuel comme référence pour la prochaine fois
+      - name: Save the current Q6_archive_date.txt as reference
+        run: |
+          cp Q6_archive_date.txt Q6_archive_date.txt.prev
+
+      # Étape 5: Commit et push des nouveaux fichiers
+      - name: Commit and push files
+        run: |
+          git config --global user.name "Julia123456789037"
+          git config --global user.email "julia037.filia@gmail.com"
+          git add Q6_archive_date.txt Q6_différences.txt
+          git commit -m "Create Q6_archive_date.txt and Q6_différences.txt"
+          git push
