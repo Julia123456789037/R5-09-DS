@@ -14,9 +14,9 @@ public class LigneEtoile
 		/*-----------------*/
 
 		
-	    System.out.println ( "xxxx");
-	    System.out.println ( "xxx");
-	    System.out.println ( "xx");
+		System.out.println ( "xxxx");
+		System.out.println ( "xxx");
+		System.out.println ( "xx");
 		System.out.println ( "x");
 		
 	}
