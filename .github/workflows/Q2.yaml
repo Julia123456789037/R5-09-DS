@@ -12,7 +12,7 @@ jobs:
       - name: prénom et nom Q2_archive_README.md
         run: echo "Justine Bondu" >> Q2_archive_README.md
       - name: Save date and time to rapport.txt
-        run: date > Q2_archive_README.md
+        run: cat date > Q2_archive_README.md
       - name: prénom et nom Q2_archive_README.md
         run: cat README.md >> Q2_archive_README.md
       # push
