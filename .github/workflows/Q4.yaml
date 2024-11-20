@@ -1,5 +1,5 @@
-name: Q3_archive_java.txt
-run-name: ${{ github.actor }} is testing Q3_archive_java.txt
+name: Q4_archive_date.txt
+run-name: ${{ github.actor }} is testing Q4_archive_date.txt
 on: [push]
 permissions:
   contents: write
@@ -9,15 +9,16 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: prénom et nom Q3_archive_java.txt
-        run: echo "Justine Bondu" >> Q3_archive_java.txt
-      - name: ajout de Q3.java dans Q3_archive_java.txt
-        run: cat Q3.java >> Q3_archive_java.md
+      - name: prénom et nom et Q4.java Q4_archive_date.txt
+        run: echo "Justine Bondu" >> Q4_archive_date.txt
+              cat Q4.java >> Q4_archive_date.md
+      - name: Append date to Q4_archive_date.txt
+        run: echo "Date: $(date '+%d-%m-%Y')" >> Q4_archive_date.txt
       # push
-      - name: Q3_archive_java.txt commmit et push
+      - name: Q4_archive_date.txt commmit et push
         run: |
           git config --global user.name Julia123456789037
           git config --global user.email julia037.filia@gmail.com
-          git add Q2_archive_README.md
-          git commit -m "test push de Q3_archive_java.txt"
+          git add Q4_archive_date.md
+          git commit -m "test push de Q4_archive_date.txt"
           git push
