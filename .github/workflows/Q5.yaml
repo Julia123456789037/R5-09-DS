@@ -12,7 +12,7 @@ jobs:
       - name: prénom et nom Q5_archive_date.txt
         run: echo "Justine Bondu" >> Q5_archive_date.txt
       - name: ajout de Q5.java dans Q5_archive_date.txt
-        run: cat Q5.java >> Q3_archive_java.md
+        run: cat Q5.java >> Q5_archive_date.md
       # push
       - name: Q5_archive_date.txt commmit et push
         run: |
