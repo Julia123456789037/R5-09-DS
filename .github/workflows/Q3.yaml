@@ -19,14 +19,20 @@ jobs:
         run: |
           cat Q3.java >> Q3_archive_java.md
 
-      - name: Pull changes from remote before pushing
-        run: |
-          git pull origin main --rebase
-
-      - name: Commit and push Q3_archive_java.md
+      # Commit the local changes
+      - name: Commit local changes
         run: |
           git config --global user.name "Julia123456789037"
           git config --global user.email "julia037.filia@gmail.com"
           git add Q3_archive_java.md
-          git commit -m "test push de Q3_archive_java.md"
+          git commit -m "Add name, date, and content from Q3.java"
+
+      # Pull remote changes before pushing
+      - name: Pull changes from remote before pushing
+        run: |
+          git pull origin main --rebase
+
+      # Commit and push
+      - name: Commit and push Q3_archive_java.md
+        run: |
           git push
