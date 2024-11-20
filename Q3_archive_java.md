@@ -5,7 +5,7 @@ Justine Bondu
  * @version 1 du 
  */
 
-public class LigneEtoile
+public class Q3
 {
 
 	public static void main(String[] argv)
