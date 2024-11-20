@@ -5,7 +5,7 @@ Justine Bondu
  * @version 1 du 
  */
 
-public class LigneEtoile
+public class Q5
 {
 
 	public static void main(String[] argv)
@@ -22,4 +22,4 @@ public class LigneEtoile
 		
 	}
 }
-Date: 20-11-2024, 13:50:06
+Date: 20-11-2024, 13:54:30
