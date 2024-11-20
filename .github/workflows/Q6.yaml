@@ -51,7 +51,12 @@ jobs:
         run: |
           cp Q6_archive_date.txt Q6_archive_date.txt.prev
 
-      # Étape 5: Commit et push des nouveaux fichiers
+      # Étape 5: Pull remote changes before pushing
+      - name: Pull latest changes from remote
+        run: |
+          git pull origin main --rebase
+
+      # Étape 6: Commit et push des nouveaux fichiers
       - name: Commit and push files
         run: |
           git config --global user.name "Julia123456789037"
