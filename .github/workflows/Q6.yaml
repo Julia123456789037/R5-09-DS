@@ -37,11 +37,13 @@ jobs:
       # Étape 3: Créer Q6_différences.txt (différence avec le dernier fichier Q6_archive_date.txt)
       - name: Compare with last Q6_archive_date.txt
         run: |
-          # Vérifier si un fichier précédent existe
-          if [ -f Q6_archive_date.txt ]; then
+          # Vérifier si le fichier précédent existe
+          if [ -f Q6_archive_date.txt.prev ]; then
             echo "Comparing with the last Q6_archive_date.txt"
             # Différencier avec le dernier fichier Q6_archive_date.txt
             diff Q6_archive_date.txt Q6_archive_date.txt.prev > Q6_différences.txt
+          else
+            echo "No previous Q6_archive_date.txt to compare with." > Q6_différences.txt
           fi
 
       # Étape 4: Sauvegarder le fichier actuel comme référence pour la prochaine fois
